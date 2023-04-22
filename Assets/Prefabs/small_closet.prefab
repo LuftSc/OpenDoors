@@ -175,6 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4708296925609355144}
+  - component: {fileID: 2420445409029675135}
   m_Layer: 0
   m_Name: small_closet
   m_TagString: Untagged
@@ -201,6 +202,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2420445409029675135
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5340402430149541170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6696633, y: 0.84283566, z: 0.883634}
+  m_Center: {x: -0.13138396, y: 0.41316915, z: -0.0018754601}
 --- !u!1 &6097374325889602411
 GameObject:
   m_ObjectHideFlags: 0
