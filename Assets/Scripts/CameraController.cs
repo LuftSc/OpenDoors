@@ -10,25 +10,28 @@ public class CameraController : MonoBehaviour
     public Transform Player;
     
     [Header("Чувствительность мыши")]
-    public float sensivity = 200f;
+    public float sensitivity = 1f;
+    [Tooltip("Ограничение углов камеры по вертикали")]
+    [Range(0f, 90f)][SerializeField] float yRotationLimit = 88f;
+    Vector2 rotation = Vector2.zero;
     void Start()
     {
         // Отключаем видимость курсора мышки во время игры
         Cursor.lockState = CursorLockMode.Locked;
         transform.Rotate(0, 0, 0);
+        Player.Rotate(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Отслеживаем перемещение мыши по оси Х и по оси У
-        mouseX = Input.GetAxis("Mouse X") * sensivity * Time.deltaTime;
-        mouseY = Input.GetAxis("Mouse Y") * sensivity * Time.deltaTime;
-        
-        // Поворот игрока
-        Player.Rotate(mouseX * new Vector3(0, 1, 0));
-        
-        // Поворот камеры
-        transform.Rotate(-mouseY * new Vector3(1, 0, 0));
+        //Более плавная реализация движения камеры
+        rotation.x += Input.GetAxis("Mouse X") * sensitivity;
+        rotation.y += Input.GetAxis("Mouse Y") * sensitivity;
+        rotation.y = Mathf.Clamp(rotation.y, -yRotationLimit, yRotationLimit);
+        var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
+        var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
+        transform.localRotation = yQuat;
+        Player.rotation = xQuat;
     }
 }

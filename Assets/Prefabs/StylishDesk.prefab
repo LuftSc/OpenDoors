@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 941929662731213189}
+  - component: {fileID: 6762769842691313692}
   m_Layer: 0
   m_Name: StylishDesk
   m_TagString: Untagged
@@ -119,6 +120,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6762769842691313692
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457599856984130367}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020888034, y: 0.0142839495, z: 0.030453186}
+  m_Center: {x: 0.000024193527, y: 0.008729916, z: 0.0002129968}
 --- !u!1 &752590862540711938
 GameObject:
   m_ObjectHideFlags: 0

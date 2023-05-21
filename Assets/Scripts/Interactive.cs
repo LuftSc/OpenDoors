@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEditor;
 
 public class Interactive : MonoBehaviour
 {
+
     [SerializeField] private Camera _fpcCamera;
     [SerializeField] private float _maxDistOfRay;
     [SerializeField] private TextMeshProUGUI _interactText;
@@ -46,13 +48,15 @@ public class Interactive : MonoBehaviour
 
     private void Interact()
     {
-        if (_hit.transform != null && _hit.transform.GetComponent<Door>())
+        if (_hit.transform != null && _hit.transform.GetComponent(typeof(Interactable)))
         {
             Debug.DrawRay(_ray.origin, _ray.direction * _maxDistOfRay, Color.green);
+            Interactable interObj = _hit.transform.gameObject.GetComponent<Interactable>();
+            _interactText.text = interObj.GetInteractText();
             _interactText.transform.gameObject.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
-                _hit.transform.GetComponent<Door>().Open();
+                _hit.transform.GetComponent<Interactable>().InteractAction();
                 _interactText.transform.gameObject.SetActive(false);
             }
         }
