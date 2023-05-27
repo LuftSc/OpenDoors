@@ -22,20 +22,49 @@ public class PlayerController : MonoBehaviour
     public GameObject _footStepsSound;
 
     public Rigidbody rb;
+
+    private Coroutine FadeCouroutine = null;
+    private float footStepsInitialVolume = 0.2f;
     void Update()
     {
         GetInput();
     }
     private void Start()
     {
-        
+        AudioSource footsteps = _footStepsSound.GetComponent<AudioSource>();
+        footStepsInitialVolume = footsteps.volume;
     }
     //Осуществляет передвижение игрока,
     // 1 параметр = направление движения, может быть либо transform.forward, либо transform.right
     // 2 параметр = знак, может быть либо 1, либо -1.
+
+    public static class FadeAudioSource
+    {
+        public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+        {
+            float currentTime = 0;
+            float start = audioSource.volume;
+            while (currentTime < duration)
+            {
+                currentTime += Time.deltaTime;
+                audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+                if(audioSource.volume == 0)
+                    audioSource.Pause();
+                yield return null;
+            }
+            yield break;
+        }
+    }
+
     private void MovePlayer(Vector3 direction, int sign)
     {
+        if (FadeCouroutine != null)
+        {
+            StopCoroutine(FadeCouroutine);
+            FadeCouroutine = null;
+        }
         AudioSource footsteps = _footStepsSound.GetComponent<AudioSource>();
+        footsteps.volume = footStepsInitialVolume;
         footsteps.UnPause();
         // Когда зажат левый шифт, персонаж бежит быстрее
         if (Input.GetKey(KeyCode.LeftShift))
@@ -54,18 +83,26 @@ public class PlayerController : MonoBehaviour
     private void GetInput()
     {
         // Движение вперёд
-        if (Input.GetKey(KeyCode.W)) MovePlayer(transform.forward, 1);
+        if (Input.GetKey(KeyCode.W)) {
+            MovePlayer(transform.forward, 1); 
+        }
         // Движение назад
-        if (Input.GetKey(KeyCode.S)) MovePlayer(transform.forward, -1);
+        if (Input.GetKey(KeyCode.S)) {
+            MovePlayer(transform.forward, -1); 
+        }
         // Движение влево
-        if (Input.GetKey(KeyCode.A)) MovePlayer(transform.right, -1);
+        if (Input.GetKey(KeyCode.A)) {
+            MovePlayer(transform.right, -1); 
+        }
         // Движение вправо
-        if (Input.GetKey(KeyCode.D)) MovePlayer(transform.right, 1);
+        if (Input.GetKey(KeyCode.D)) {
+            MovePlayer(transform.right, 1); 
+        }
 
-        if(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        if(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && FadeCouroutine == null)
         {
             AudioSource footsteps = _footStepsSound.GetComponent<AudioSource>();
-            footsteps.Pause();
+            FadeCouroutine = StartCoroutine(FadeAudioSource.StartFade(footsteps, 0.4f, 0f));
         }
 
         // Прыжок
