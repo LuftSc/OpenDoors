@@ -145,7 +145,10 @@ MonoBehaviour:
   doAnimation: 0
   objectToAnimate: {fileID: 0}
   animatorStateList: []
-  animationDelay: 0
   doSwitchActive: 0
   objectsToSwitch: []
-  switchActiveDelay: 0
+  doAssignTask: 0
+  taskPrefab: {fileID: 8271662246661602130, guid: 80d23c4b008d5e245a6ec1b244bf6b97, type: 3}
+  tasksToAssign: []
+  doCompleteTask: 0
+  tasksToComplete: []

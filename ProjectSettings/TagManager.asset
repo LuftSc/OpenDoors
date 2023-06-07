@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
+  - Page_UI
+  - Tasks_UI
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - UI
   - Floor
   - Player
-  - 
+  - PostProcess
   - 
   - 
   - 

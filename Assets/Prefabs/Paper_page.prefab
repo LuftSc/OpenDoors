@@ -98,7 +98,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\u0442\u0435\u0441\u0442"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 17.385025, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -342,6 +342,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7f708967e0f23004ca12a644fd983694, type: 3}
   m_PrefabInstance: {fileID: 9072324808091439242}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &8110155248172111965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153264139138772443}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00960938, y: 0.014295207, z: 0.0009671864}
+  m_Center: {x: -0.01951242, y: -0.0020064968, z: 0.009729995}
 --- !u!114 &6216691686216613713
 MonoBehaviour:
   m_ObjectHideFlags: 0

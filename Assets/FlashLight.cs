@@ -15,7 +15,9 @@ public class FlashLight : Interactable
         PlayerController player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         player.setFlashLightState(true);
         this.gameObject.SetActive(false);
+        completeTaskOnInteract(taskID);
     }
+
     private void Start()
     {
     }
